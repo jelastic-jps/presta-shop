@@ -1,7 +1,6 @@
 # Jelastic PrestaShop Add-on
 
 This repository provides [PrestaShop](http://www.prestashop.com/) add-on for Jelastic Platform.
-[![GET IT HOSTED](https://raw.githubusercontent.com/JelasticJPS/PrestaShop/master/images/getithosted.png)](http://go.jelastic.com/test?hoster-select=1&theme=modern&app=https://raw.githubusercontent.com/JelasticJPS/PrestaShop/master/PrestaShop-1.6.1.1.json)
 
 **PrestaShop** is an open source and completely customizable solution for selling products online.
 
