@@ -8,7 +8,7 @@
 		"categories": [
 				"apps/e-commerce", "apps/sales-and-marketing"
 		],
-		"logo": "https://raw.githubusercontent.com/jelastic-jps/PrestaShop/master/images/presta.png",
+		"logo": "https://raw.githubusercontent.com/jelastic-jps/presta-shop/master/images/presta.png",
 		"type": "php",
 		"homepage": "http://www.prestashop.com/",
 		"description": {
@@ -33,7 +33,7 @@
 				]
 			},
 			"deployments": [{
-					"archive": "https://raw.githubusercontent.com/jelastic-jps/PrestaShop/master/dumps/Adapter.zip",
+					"archive": "https://raw.githubusercontent.com/jelastic-jps/presta-shop/master/dumps/Adapter.zip",
 					"name": "prestashop-1.6.1.1.zip",
 					"context": "ROOT"
 				}
@@ -43,7 +43,7 @@
 					"database": {
 						"name": "prestashop",
 						"user": "prestashop",
-						"dump": "https://raw.githubusercontent.com/jelastic-jps/PrestaShop/master/dumps/prestashop.sql",
+						"dump": "https://raw.githubusercontent.com/jelastic-jps/presta-shop/master/dumps/prestashop.sql",
 						"patch": "UPDATE prestashop.ps_employee SET email='${user.email}' WHERE id_employee=1; UPDATE prestashop.ps_employee SET passwd=MD5('4xj1QUQH0m3MVSvkpGG097BWxA25LOqkrrCg7j6OmFhajU0dkVrmhutN${user.appPassword}') WHERE id_employee=1; UPDATE prestashop.ps_configuration SET value='${env.domain}' WHERE id_configuration=234; UPDATE prestashop.ps_configuration SET value='${env.domain}' WHERE id_configuration=235; UPDATE prestashop.ps_shop_url SET domain='${env.domain}' WHERE id_shop=1; UPDATE prestashop.ps_shop_url SET domain_ssl='${env.domain}' WHERE id_shop=1; UPDATE prestashop.ps_configuration SET value='${user.email}' WHERE id_configuration=237; UPDATE prestashop.ps_contact SET email='${user.email}' WHERE id_contact=1; UPDATE prestashop.ps_contact SET email='${user.email}' WHERE id_contact=2;"
 					}
 				}, {
