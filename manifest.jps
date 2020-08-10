@@ -1,5 +1,6 @@
 type: install
 id: prestashop
+version: 1.7
 name: PrestaShop
 categories:
 - apps/e-commerce
