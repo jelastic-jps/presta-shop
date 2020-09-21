@@ -24,8 +24,8 @@ onInstall:
 actions:
   deployApp:
   - deploy:
-      archive: https://download.jelastic.com/public.php?service=files&t=a99890131866601c1cbf4c74498515aa&download
-      name: PrestaShop-1.7.6.3.zip
+      archive: https://github.com/PrestaShop/PrestaShop/releases/download/${globals.version_presta-shop}/prestashop_${globals.version_presta-shop}.zip
+      name: PrestaShop-${globals.version_presta-shop}.zip
       context: ROOT
   - replaceInFile:
       nodeType: apache2
