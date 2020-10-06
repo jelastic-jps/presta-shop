@@ -5,28 +5,46 @@ name: PrestaShop
 categories:
 - apps/e-commerce
 - apps/sales-and-marketing
-logo: https://download.jelastic.com/public.php?service=files&t=f2998b62f43f267aadb5339a7fac4c66&download
+
+baseUrl: https://raw.githubusercontent.com/jelastic-jps/presta-shop/master/
+logo: images/presta.png
 homepage: http://www.prestashop.com/
-description: PrestaShop is an open source and completely customizable solution for
-  selling products online, that is effective, fast and easy to use, even for non-professionals.
-engine: php7.3
+description: PrestaShop is an open source and completely customizable solution for selling products online, that is effective, fast and easy to use, even for non-professionals.
+
+mixins:
+  - configs/vers.yaml
+
 globals:
-  sqlPass: "${fn.password}"
+  sqlPass: ${fn.password}
+  application: prestashop
+  appPath: /tmp/presta.zip
+
 nodes:
 - cloudlets: 8
   nodeType: apache2
 - nodeType: mysql5
   cloudlets: 8
+
 onInstall:
+- downloadArchive
 - deployApp
 - createDb
 - installPrestaShop
+
 actions:
+  downloadArchive:
+    cmd [cp]: |-
+      curl -fsSL "https://github.com/${globals.application}/${globals.application}/releases/download/${globals.version_presta-shop}/prestashop_${globals.version_presta-shop}.zip" -o ${globals.appPath}
+      cd /var/www/webroot/ROOT/
+      mv ${globals.appPath} presta.zip
+      unzip -o presta.zip
+      unzip -o prestashop.zip
+      rm -rf prestashop.zip presta.zip
   deployApp:
-  - deploy:
-      archive: https://github.com/PrestaShop/PrestaShop/releases/download/${globals.version_presta-shop}/prestashop_${globals.version_presta-shop}.zip
-      name: PrestaShop-${globals.version_presta-shop}.zip
-      context: ROOT
+  - addContext:
+      fileName: PrestaShop-${globals.version_presta-shop}.zip
+      name: ROOT
+      type: ARCHIVE
   - replaceInFile:
       nodeType: apache2
       path: "/etc/php.ini"
