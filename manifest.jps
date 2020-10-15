@@ -17,7 +17,8 @@ mixins:
 globals:
   sqlPass: ${fn.password}
   application: prestashop
-  appPath: /tmp/presta.zip
+  appTmpPath: /tmp/presta
+  WEBROOT: /var/www/webroot/ROOT/
 
 nodes:
 - cloudlets: 8
@@ -34,12 +35,12 @@ onInstall:
 actions:
   downloadArchive:
     cmd [cp]: |-
-      curl -fsSL "https://github.com/${globals.application}/${globals.application}/releases/download/${globals.version_presta-shop}/prestashop_${globals.version_presta-shop}.zip" -o ${globals.appPath}
-      cd /var/www/webroot/ROOT/
-      mv ${globals.appPath} presta.zip
-      unzip -o presta.zip
-      unzip -o prestashop.zip
-      rm -rf prestashop.zip presta.zip
+      curl -fsSL "https://github.com/${globals.application}/${globals.application}/releases/download/${globals.version_presta-shop}/prestashop_${globals.version_presta-shop}.zip" -o ${globals.appTmpPath}.zip
+      unzip -o ${globals.appTmpPath}.zip -d ${globals.appTmpPath}
+      cd ${globals.WEBROOT}
+      unzip -o ${globals.appTmpPath}/prestashop.zip -d ${globals.WEBROOT}
+      mv ${globals.appTmpPath}.zip presta.zip
+      rm -rf ${globals.WEBROOT}prestashop.zip ${globals.appTmpPath}.zip
   deployApp:
   - addContext:
       fileName: PrestaShop-${globals.version_presta-shop}.zip
