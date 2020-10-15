@@ -39,7 +39,6 @@ actions:
       unzip -o ${globals.appTmpPath}.zip -d ${globals.appTmpPath}
       cd ${globals.WEBROOT}
       unzip -o ${globals.appTmpPath}/prestashop.zip -d ${globals.WEBROOT}
-      mv ${globals.appTmpPath}.zip presta.zip
       rm -rf ${globals.WEBROOT}prestashop.zip ${globals.appTmpPath}.zip
   deployApp:
   - addContext:
