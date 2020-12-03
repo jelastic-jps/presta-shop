@@ -5,7 +5,8 @@ name: PrestaShop
 categories:
 - apps/e-commerce
 - apps/sales-and-marketing
-logo: https://download.jelastic.com/public.php?service=files&t=f2998b62f43f267aadb5339a7fac4c66&download
+baseUrl: https://raw.githubusercontent.com/jelastic-jps/presta-shop/master
+logo: /images/presta.svg
 homepage: http://www.prestashop.com/
 description: PrestaShop is an open source and completely customizable solution for
   selling products online, that is effective, fast and easy to use, even for non-professionals.
