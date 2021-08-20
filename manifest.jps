@@ -19,6 +19,7 @@ globals:
   application: prestashop
   appTmpPath: /tmp/presta
   WEBROOT: /var/www/webroot/ROOT/
+  admin_URL: admin${fn.random}
 
 nodes:
 - cloudlets: 8
@@ -68,12 +69,13 @@ actions:
     - cd ${SERVER_WEBROOT}/ROOT/install; php index_cli.php --domain=${env.domain}
       --db_server=${nodes.sqldb.address} --db_name=prestashop --db_user=prestashop
       --db_password=${globals.sqlPass} --email=${user.email} --firstname=Admin --lastname=Jelastic
-      --password=${user.appPassword}
+      --password=${user.appPassword} > /dev/null 2>&1
     - rm -rf ${SERVER_WEBROOT}/ROOT/install
+    - mv ${SERVER_WEBROOT}/ROOT/admin ${SERVER_WEBROOT}/ROOT/${globals.admin_URL} && echo ${globals.admin_URL}
 success: |
   Below you will find your admin panel link, username and password.  
   
-  Admin panel URL: [${env.protocol}://${env.domain}/admin](${env.protocol}://${env.domain}/admin)  
+  Admin panel URL: [${env.protocol}://${env.domain}/${globals.admin_URL}](${env.protocol}://${env.domain}/${globals.admin_URL})  
   Admin email: ${user.email}  
   Password: ${user.appPassword}  
   
