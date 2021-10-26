@@ -53,6 +53,8 @@ actions:
       replacements:
       - pattern: ";extension=gd.so"
         replacement: extension=gd.so
+      - pattern: ";extension=intl.so"
+        replacement: extension=intl.so
   - restartNode [cp]
   createDb:
     prepareSqlDatabase:
@@ -69,7 +71,7 @@ actions:
     - cd ${SERVER_WEBROOT}/ROOT/install; php index_cli.php --domain=${env.domain}
       --db_server=${nodes.sqldb.address} --db_name=prestashop --db_user=prestashop
       --db_password=${globals.sqlPass} --email=${user.email} --firstname=Admin --lastname=Jelastic
-      --password=${user.appPassword} > /dev/null 2>&1
+      --password=${user.appPassword} > ${SERVER_WEBROOT}/ROOT/install.log 2>&1
     - rm -rf ${SERVER_WEBROOT}/ROOT/install
     - mv ${SERVER_WEBROOT}/ROOT/admin ${SERVER_WEBROOT}/ROOT/${globals.admin_URL} && echo ${globals.admin_URL}
 success: |
