@@ -57,15 +57,10 @@ actions:
         replacement: extension=intl.so
   - restartNode [cp]
   createDb:
-    prepareSqlDatabase:
-      nodeGroup: sqldb
-      loginCredentials:
-        user: root
-        password: "${nodes.sqldb.password}"
-      newDatabaseName: prestashop
-      newDatabaseUser:
-        name: prestashop
-        password: "${globals.sqlPass}"
+    cmd[sqldb]: |-
+      MYSQL_PWD=${nodes.mysql5.password} mysql -uroot -e "CREATE DATABASE prestashop;"
+      MYSQL_PWD=${nodes.mysql5.password} mysql -uroot -e "CREATE USER 'prestashop'@'%' IDENTIFIED BY '${globals.sqlPass}';"
+      MYSQL_PWD=${nodes.mysql5.password} mysql -uroot -e "GRANT ALL PRIVILEGES ON prestashop.* To 'prestashop'@'%' IDENTIFIED BY '${globals.sqlPass}';"
   installPrestaShop:
     cmd [cp]:
     - cd ${SERVER_WEBROOT}/ROOT/install; php index_cli.php --domain=${env.domain}
