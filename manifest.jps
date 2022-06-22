@@ -14,6 +14,22 @@ description: PrestaShop is an open source and completely customizable solution f
 mixins:
   - configs/vers.yaml
 
+onAfterChangeTopology:
+  - if (${event.response.response.env.sslstate}):
+      setSSL:
+        value: 1
+  - else:
+      setSSL:
+        value: 0
+
+onAfterBindSSL: 
+  setSSL:
+    value: 1
+
+onAfterRemoveSSL:
+  setSSL:
+    value: 0
+
 globals:
   sqlPass: ${fn.password}
   application: prestashop
@@ -42,6 +58,7 @@ actions:
       cd ${globals.WEBROOT}
       unzip -o ${globals.appTmpPath}/prestashop.zip -d ${globals.WEBROOT}
       rm -rf ${globals.WEBROOT}prestashop.zip ${globals.appTmpPath}.zip
+
   deployApp:
   - addContext:
       fileName: PrestaShop-${globals.version_presta-shop}.zip
@@ -56,6 +73,7 @@ actions:
       - pattern: ";extension=intl.so"
         replacement: extension=intl.so
   - restartNode [cp]
+
   createDb:
     cmd[sqldb]: |-
       MYSQL_PWD=${nodes.mysql5.password} mysql -uroot -e "CREATE DATABASE prestashop;"
@@ -69,6 +87,10 @@ actions:
       --password=${user.appPassword} > ${SERVER_WEBROOT}/ROOT/install.log 2>&1
     - rm -rf ${SERVER_WEBROOT}/ROOT/install
     - mv ${SERVER_WEBROOT}/ROOT/admin ${SERVER_WEBROOT}/ROOT/${globals.admin_URL} && echo ${globals.admin_URL}
+
+  setSSL:
+    cmd [sqldb]:  mysql -uprestashop -p${globals.sqlPass} -e "UPDATE prestashop.ps_configuration SET value='${this.value}' WHERE name like \"%PS_SSL_ENABLED%\";"
+
 success: |
   Below you will find your admin panel link, username and password.  
   
