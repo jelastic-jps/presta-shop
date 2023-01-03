@@ -40,7 +40,7 @@ globals:
 nodes:
 - cloudlets: 8
   nodeType: apache2
-  engine: php7.4
+  engine: php8.1
 - nodeType: mysql5
   cloudlets: 8
 
