@@ -83,7 +83,7 @@ actions:
     cmd [cp]:
     - cd ${SERVER_WEBROOT}/ROOT/install; php index_cli.php --domain=${env.domain}
       --db_server=${nodes.sqldb.address} --db_name=prestashop --db_user=prestashop
-      --db_password=${globals.sqlPass} --email=${user.email} --firstname=Admin --lastname=Jelastic
+      --db_password=${globals.sqlPass} --email=${user.email} --firstname=Admin --lastname=Virtuozzo
       --password=${user.appPassword} > ${SERVER_WEBROOT}/ROOT/install.log 2>&1
     - rm -rf ${SERVER_WEBROOT}/ROOT/install
     - mv ${SERVER_WEBROOT}/ROOT/admin ${SERVER_WEBROOT}/ROOT/${globals.admin_URL} && echo ${globals.admin_URL}
@@ -98,4 +98,4 @@ success: |
   Admin email: ${user.email}  
   Password: ${user.appPassword}  
   
-  To add custom domain name for your PrestaShop installation follow the steps described in our [documentation](http://docs.jelastic.com/custom-domains)
+  To add custom domain name for your PrestaShop installation follow the steps described in our [documentation](https://www.virtuozzo.com/application-platform-docs/custom-domains/)
