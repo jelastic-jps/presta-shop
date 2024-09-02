@@ -6,7 +6,7 @@ categories:
 - apps/e-commerce
 - apps/sales-and-marketing
 
-baseUrl: https://raw.githubusercontent.com/jelastic-jps/presta-shop/master/
+baseUrl: https://raw.githubusercontent.com/sych74/presta-shop/master/
 logo: images/presta.svg
 homepage: http://www.prestashop.com/
 description: PrestaShop is an open source and completely customizable solution for selling products online, that is effective, fast and easy to use, even for non-professionals.
@@ -41,7 +41,7 @@ nodes:
 - cloudlets: 8
   nodeType: apache2
   engine: php8.1
-- nodeType: mysql5
+- nodeType: mysql8
   cloudlets: 8
 
 onInstall:
@@ -76,9 +76,9 @@ actions:
 
   createDb:
     cmd[sqldb]: |-
-      MYSQL_PWD=${nodes.mysql5.password} mysql -uroot -e "CREATE DATABASE prestashop;"
-      MYSQL_PWD=${nodes.mysql5.password} mysql -uroot -e "CREATE USER 'prestashop'@'%' IDENTIFIED BY '${globals.sqlPass}';"
-      MYSQL_PWD=${nodes.mysql5.password} mysql -uroot -e "GRANT ALL PRIVILEGES ON prestashop.* To 'prestashop'@'%' IDENTIFIED BY '${globals.sqlPass}';"
+      MYSQL_PWD=${nodes.mysql8.password} mysql -uroot -e "CREATE DATABASE prestashop;"
+      MYSQL_PWD=${nodes.mysql8.password} mysql -uroot -e "CREATE USER 'prestashop'@'%' IDENTIFIED BY '${globals.sqlPass}';"
+      MYSQL_PWD=${nodes.mysql8.password} mysql -uroot -e "GRANT ALL PRIVILEGES ON prestashop.* To 'prestashop'@'%' WITH GRANT OPTION;"
   installPrestaShop:
     cmd [cp]:
     - cd ${SERVER_WEBROOT}/ROOT/install; php index_cli.php --domain=${env.domain}
