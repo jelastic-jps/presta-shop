@@ -31,7 +31,7 @@ onAfterRemoveSSL:
     value: 0
 
 globals:
-  sqlPass: ${fn.password}
+  sqlPass: ${fn.password(10)}
   application: prestashop
   appTmpPath: /tmp/presta
   WEBROOT: /var/www/webroot/ROOT/
