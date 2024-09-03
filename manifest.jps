@@ -6,7 +6,7 @@ categories:
 - apps/e-commerce
 - apps/sales-and-marketing
 
-baseUrl: https://raw.githubusercontent.com/sych74/presta-shop/master/
+baseUrl: https://raw.githubusercontent.com/jelastic-jps/presta-shop/master/
 logo: images/presta.svg
 homepage: http://www.prestashop.com/
 description: PrestaShop is an open source and completely customizable solution for selling products online, that is effective, fast and easy to use, even for non-professionals.
