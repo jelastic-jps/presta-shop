@@ -4,7 +4,7 @@
 
 # PrestaShop
 
-The package deploys the [PrestaShop](https://prestashop.com/) solution - an open-source, fully customizable e-commerce platform for selling products online. PrestaShop is effective, adapted to the growth of your business, fast and easy to use, even for non-professionals.
+The package deploys the [PrestaShop](https://prestashop.com/) solution - an open-source, fully customizable e-commerce platform for selling products online. PrestaShop is effective, adapted to the growth of your business, fast, and easy to use, even for non-professionals.
 
 
 ## Environment Topology

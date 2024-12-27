@@ -9,7 +9,7 @@ categories:
 baseUrl: https://raw.githubusercontent.com/jelastic-jps/presta-shop/master/
 logo: images/presta.svg
 homepage: https://prestashop.com/
-description: PrestaShop is an open source and completely customizable solution for selling products online, that is effective, fast and easy to use, even for non-professionals.
+description: PrestaShop is an open-source and fully customizable solution for selling products online. PrestaShop is effective, fast, and easy to use, even for non-professionals.
 
 mixins:
   - configs/vers.yaml
@@ -92,10 +92,10 @@ actions:
     cmd [sqldb]:  mysql -uprestashop -p${globals.sqlPass} -e "UPDATE prestashop.ps_configuration SET value='${this.value}' WHERE name like \"%PS_SSL_ENABLED%\";"
 
 success: |
-  Below you will find your admin panel link, username and password.  
+  Use the following credentials to access the PrestaShop admin panel:
   
-  Admin panel URL: [${env.protocol}://${env.domain}/${globals.admin_URL}](${env.protocol}://${env.domain}/${globals.admin_URL})  
-  Admin email: ${user.email}  
-  Password: ${user.appPassword}  
+  **Admin panel URL:** [${env.protocol}://${env.domain}/${globals.admin_URL}](${env.protocol}://${env.domain}/${globals.admin_URL})  
+  **Admin email:** ${user.email}  
+  **Admin password:** ${user.appPassword}  
   
-  To add custom domain name for your PrestaShop installation follow the steps described in our [documentation](https://www.virtuozzo.com/application-platform-docs/custom-domains/)
+  To add a custom domain name for your PrestaShop installation, follow the steps described in our [documentation](https://www.virtuozzo.com/application-platform-docs/custom-domains/).
