@@ -1,35 +1,34 @@
-# Jelastic PrestaShop Add-on
+<p align="center"> 
+<img src="images/presta.svg" alt="PrestaShop">
+</p>
 
-This repository provides [PrestaShop](http://www.prestashop.com/) add-on for Jelastic Platform.
+# PrestaShop
 
-**PrestaShop** is an open source and completely customizable solution for selling products online.
-
-**Type of nodes this add-on can be applied to**:
-- apache2
-- mysql5
-
-### What it can be used for?
-PrestaShop is an open source and completely customizable solution for selling products online, that is effective, fast and easy to use, even for non-professionals.
+The package deploys the [PrestaShop](https://prestashop.com/) solution - an open-source, fully customizable e-commerce platform for selling products online. PrestaShop is effective, adapted to the growth of your business, fast, and easy to use, even for non-professionals.
 
 
+## Environment Topology
 
-### What Jelastic add-on is?
+This package creates a dedicated PrestaShop environment that contains one application server and one database container. It automatically deploys and sets the PrestaShop application. The automatic vertical scaling is enabled out of the box, and [horizontal scaling](https://www.virtuozzo.com/application-platform-docs/automatic-horizontal-scaling/) can be configured (if needed). The default software stacks utilized in the package are the following:
 
-Jelastic add-on represents a package with a kind of a patch, that can be applied to an environment in order to improve and complement its functionality. The full list of the available at a platform add-ons can be seen at the corresponding same-named section of [Jelastic Marketplace](https://docs.jelastic.com/marketplace#add-ons].
-
-### How to install an add-on?
-###### For Developers
-
-In case you can’t find the desired package within the list of available ones, copy and save the content of add-on’s manifest as a *.json* file and [import](https://docs.jelastic.com/environment-export-import#import) it to the dashboard. Herewith, you can apply any necessary adjustments to an add-on through this file (if such are required) and install its customized version in the similar way.
-
-###### For Cluster Admins
-
-In order to add the desired add-on to your platform and make it available for users, perform the following:
-- copy the content of its manifest 
-- switch to the [Marketplace](http://ops-docs.jelastic.com/marketplace-46) section of your JCA panel and choose **Add > Add-on** menu option
-- paste the copied strings into the appeared frame and **Save** the template
-- choose your newly added add-on within the list and click on **Publish** above
-
-Also, you are able to adjust the given add-on template according to your needs and provide its customized version.
+- Apache 2 PHP application server (PHP 8.1)
+- MySQL 8 database
+- PrestaShop 8.1.7
 
 
+## Deployment to Cloud
+
+To get your PrestaShop solution, click the "**Deploy to Cloud**" button below, specify your email address within the widget, choose one of the [Virtuozzo Public Cloud Providers](https://www.virtuozzo.com/application-platform-partners/), and confirm by clicking **Install**.
+
+[![Deploy to Cloud](https://raw.githubusercontent.com/jelastic-jps/common/main/images/deploy-to-cloud.png)](https://www.virtuozzo.com/install/?manifest=https://raw.githubusercontent.com/jelastic-jps/presta-shop/refs/heads/master/manifest.jps)
+
+> If you already have a Virtuozzo Application Platform (VAP) account, you can deploy this solution from the [Marketplace](https://www.virtuozzo.com/application-platform-docs/marketplace/) or [import](https://www.virtuozzo.com/application-platform-docs/environment-import/) a manifest file from this repository.
+
+
+## Installation Process
+
+In the opened installation window at the VAP dashboard, provide a preferred environment and display names, choose a region (if available), and confirm the installation.
+
+![PrestaShop deployment wizard](images/prestashop-deployment-wizard.png)
+
+Your PrestaShop application will be automatically installed in a few minutes.
