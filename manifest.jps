@@ -37,6 +37,9 @@ globals:
   WEBROOT: /var/www/webroot/ROOT/
   admin_URL: admin${fn.random}
 
+ssl: true
+skipNodeEmails: true
+
 nodes:
 - cloudlets: 8
   nodeType: apache2
@@ -49,6 +52,12 @@ onInstall:
 - deployApp
 - createDb
 - installPrestaShop
+- if (${quota.environment.jelasticssl.enabled}):
+  - setSSL:
+      value: 1
+- else:
+  - setSSL:
+      value: 0
 
 actions:
   downloadArchive:
